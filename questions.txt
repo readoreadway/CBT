@@ -1,0 +1,49 @@
+Which of the below is the abbreviation of CSS ?
+(A) Cascade sheets style
+(B) Color and style sheets
+(C) Cascading style sheets
+(D) Coded Style Sheet
+
+
+Which of the following is the correct syntax to add the external stylesheet in CSS?
+(A) <style src = quiz.css>
+(B) <style src = "quiz.css">
+(C) <stylesheet> quiz.css </stylesheet>
+(D) <link rel="stylesheet" type="quiz/css" href="quiz.css">
+
+
+Which of the below CSS properties is used to change the background color of CSS ?
+(A) bg color
+(B) color-background
+(C) background-color
+(D) color
+
+Which of the below CSS class is used to change the text color of CSS ?
+(A) background-color
+(B) color
+(C) color-background
+(d) None of the above
+
+Which of the below CSS property is used to add a stroke in the text ?
+(A) text-stroke
+(B) text-transform
+(C) text-decoration
+(D) None of the above
+
+Which element is used to represent the transparency of an element in CSS ?
+(A) Hover
+(B) Opacity
+(C) Transparency
+(D) Overlay
+
+How do we set the default width of the font in CSS ?
+(A) font-stretch
+(B) font-weight
+(C) text-transform
+(D) font-variant
+
+Which of the below CSS properties represent the order of flex items in the grid container ?
+(A) order
+(B) float
+(C) overflow
+(D) All of the above
