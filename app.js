@@ -1,12 +1,74 @@
 
 let quizData = [
     {
+        question: 'What does HTML stand for?',
+        a: 'Hyper Text Markup Lane',
+        b: 'Hot Mail landed',
+        c: 'How to Make Lasagna',
+        d: 'Hyper Text Markup Language',
+        correct: 'd'
+    },
+
+    {
+        question: 'How many tags are in a regular element?',
+        a: '2',
+        b: '1',
+        c: '3',
+        d: 'All of the above',
+        correct: 'a'
+    },
+
+    {
+        question: 'What is the difference between an opening tag and a closing tag?',
+        a: 'Opening tag has a / in front',
+        b: 'Closing tag has a / in front',
+        c: 'There is no difference',
+        d: 'None of the above',
+        correct: 'b'
+    },
+
+    {
+        question: 'Which of the following is an example of an empty element?',
+        a: '<img/>',
+        b: '<img> </img>',
+        c: '</img>',
+        d: 'All of the above',
+        correct: 'a'
+    },
+
+    {
+        question: 'What does <a href= "http://www.google.com" title = "Link to Google" target = "_blank">Google</a> do?',
+        a: 'Nothing',
+        b: 'Adds a search engine to the page',
+        c: 'Adds a link to google on the page',
+        d: 'None of the above',
+        correct: 'c'
+    },
+
+    {
+        question: 'What should values always be enclosed in?',
+        a: 'Quotation marks',
+        b: 'Commas',
+        c: 'Parenthesis',
+        d: 'Square bracket',
+        correct: 'a'
+    },
+
+    {
+        question: 'Where do all items for the same website need to be saved?',
+        a: 'Where ever is fine',
+        b: 'In the same folder',
+        c: 'In different folders',
+        d: 'In the desktop',
+        correct: 'b'
+    },
+    {
         question: 'Which of the below is the abbreviation of CSS ?',
         a: 'Cascade sheets style',
         b: 'Color and style sheets',
         c: 'Cascading style sheets',
         d: 'Coded Style Sheet',
-        answer: 'c'
+        correct: 'c'
     },
 
     {
@@ -15,7 +77,7 @@ let quizData = [
         b: '<style src = "quiz.css">',
         c: '<stylesheet> quiz.css </stylesheet>',
         d: '<link rel="stylesheet" type="quiz/css" href="quiz.css">',
-        answer: 'd'
+        correct: 'd'
     },
 
     {
@@ -24,7 +86,7 @@ let quizData = [
         b: 'color-background',
         c: 'background-color',
         d: 'color',
-        answer: 'c'
+        correct: 'c'
     },
 
     {
@@ -33,7 +95,7 @@ let quizData = [
         b: 'color',
         c: 'color-background',
         d: 'None of the above',
-        answer: 'b'
+        correct: 'b'
     },
 
     {
@@ -42,7 +104,7 @@ let quizData = [
         b: 'text-transform',
         c: 'text-decoration',
         d: 'None of the above',
-        answer: 'a'
+        correct: 'a'
     },
 
     {
@@ -51,7 +113,7 @@ let quizData = [
         b: 'Opacity',
         c: 'Transparency',
         d: 'Overlay',
-        answer: 'b'
+        correct: 'b'
     },
 
     {
@@ -60,7 +122,7 @@ let quizData = [
         b: 'font-weight',
         c: 'text-transform',
         d: 'font-variant',
-        answer: 'a'
+        correct: 'a'
     },
 
     {
@@ -69,17 +131,17 @@ let quizData = [
         b: 'float',
         c: 'overflow',
         d: 'All of the above',
-        answer: 'a'
+        correct: 'a'
     },
 ]
 
 const quiz = document.getElementById('quiz')
 const questionEl = document.getElementById('question')
 const answerEls = document.querySelectorAll('.answer')
-const a__Text = document.getElementById('a__text')
-const b__Text = document.getElementById('b__text')
-const c__Text = document.getElementById('c__text')
-const d__Text = document.getElementById('d__text')
+const aText = document.getElementById('a_text')
+const bText = document.getElementById('b_text')
+const cText = document.getElementById('c_text')
+const dText = document.getElementById('d_text')
 const submitBtn = document.getElementById('submit')
 
 let currentQuiz = 0
@@ -88,52 +150,71 @@ let score = 0
 loadQuiz()
 
 function loadQuiz(){
+
     deselectAnswers()
 
-    let currentQuizData = quizData[currentQuiz]
+    const currentQuizData = quizData[currentQuiz]
     questionEl.innerText = currentQuizData.question
-    a__Text.innerText = currentQuizData.a
-    b__Text.innerText = currentQuizData.b
-    c__Text.innerText = currentQuizData.c
-    d__Text.innerText = currentQuizData.d
+    aText.innerText = currentQuizData.a
+    bText.innerText = currentQuizData.b
+    cText.innerText = currentQuizData.c
+    dText.innerText = currentQuizData.d
+
 }
 
 function deselectAnswers(){
-    answerEls.forEach(answerEl => answerEl.checked = false)
+    answerEls.forEach(answerEls => answerEls.checked = false)
 }
 
 function getSelected(){
     let answer
     answerEls.forEach(answerEl => {
-        if (answerEl.checked) {
-            answer = answerEl.id 
+        if(answerEl.checked){
+            answer = answerEl.id
         }
     })
     return answer
 }
 
-submitBtn.addEventListener('click', ()=> {
+submitBtn.addEventListener('click', ()=>{
     const answer = getSelected()
 
-    if (answer) {
-        if(answer.id === quizData[currentQuiz].answer) {
+    if(answer){
+        if(answer == quizData[currentQuiz].correct) {
             score ++
         }
 
-        currentQuiz++
+        currentQuiz ++
 
-        if(currentQuiz < quizData.length) {
+        if(currentQuiz < quizData.length){
             loadQuiz()
         }
         else {
-            quiz.innerHTML = 
-            `
-                <h2>You have answered ${score}/${quizData.length} questions correctly!</h2>
-
+            let percentage = score/quizData.length * 100
+            if(percentage >= 50) {
+                quiz.innerHTML = `
+                <h2>You have answered ${score}/${quizData.length} questions correctly. This translates to ${Math.round((score/quizData.length) * 100)}%</h2>
+                <h1>Congratulations!</h1>
                 <button onclick="location.reload()">Reload</button>
             `
+            }
+            else{
+                quiz.innerHTML = `
+                <h2>You have answered ${score}/${quizData.length} questions correctly. This translates to ${Math.round((score/quizData.length) * 100)}%</h2>
+                <h1>You want a retake? Click the button below</h1>
+                <button onclick="location.reload()">Reload</button>
+            `
+            }
         }
     }
 })
+
+
+
+
+
+
+
+
 
 
