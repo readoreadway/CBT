@@ -190,17 +190,17 @@ submitBtn.addEventListener('click', ()=>{
             loadQuiz()
         }
         else {
-            let percentage = score/quizData.length * 100
+            let percentage = Math.round((score/quizData.length) * 100)
             if(percentage >= 50) {
                 quiz.innerHTML = `
-                <h2>You have answered ${score}/${quizData.length} questions correctly. This translates to ${Math.round((score/quizData.length) * 100)}%</h2>
+                <h2>You have answered ${score}/${quizData.length} questions correctly. This translates to ${percentage}%</h2>
                 <h1>Congratulations!</h1>
                 <button onclick="location.reload()">Reload</button>
             `
             }
             else{
                 quiz.innerHTML = `
-                <h2>You have answered ${score}/${quizData.length} questions correctly. This translates to ${Math.round((score/quizData.length) * 100)}%</h2>
+                <h2>You have answered ${score}/${quizData.length} questions correctly. This translates to ${percentage}%</h2>
                 <h1>You want a retake? Click the button below</h1>
                 <button onclick="location.reload()">Reload</button>
             `
