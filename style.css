@@ -54,3 +54,22 @@ button:hover {
     width: 70%;
     letter-spacing: 4px;
 }
+
+@media (max-width: 58rem) {
+    body{
+        padding: 8rem 0;
+    }
+    .quiz__container {
+        width: 80vw;
+        margin: 5rem auto;
+    }
+}
+
+@media (max-width: 47rem) {
+    body{
+        padding: 1.5rem 0;
+    }
+    .quiz__container {
+        width: 95vw;
+    }
+}
